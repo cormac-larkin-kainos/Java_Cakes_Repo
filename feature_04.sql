@@ -8,12 +8,13 @@ BEGIN
 	START TRANSACTION;
 
     CREATE TABLE project_employee(
-        project_employee_id SMALLINT PRIMARY KEY AUTO_INCREMENT,
+        project_employee_id SMALLINT,
         employee_id SMALLINT,
         project_id SMALLINT,
         currently_active BOOLEAN,
         start_date DATE,
         end_date DATE,
+        PRIMARY KEY (employee_id, project_id, start_date),
         FOREIGN KEY (employee_id) REFERENCES employee(employee_id),
         FOREIGN KEY (project_id) REFERENCES project(project_id)
     );
